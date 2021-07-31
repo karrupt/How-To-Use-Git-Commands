@@ -1,0 +1,139 @@
+# BY- " '$' '!-!' '!_!' '$' '!-!' '@' '!\!' 'T' " # (Decode it :)  )
+
+# GIT COMMAND USE
+-- UPLOAD THE CHANGED OR MODIFIED CODE ON THE MAIN DIRECTORY WHERE IT WAS ORIGINALLY PRESENT
+# GIT IS BASICALLY A VERSION CONTROL SYSTEM THROUGH WHICH YOU CAN 
+-- CHECK THE LOG TO SEE ALL THE PREVIOUS CHANGES MADE ON THAT REPOSITORY
+-- WHO MADE THOSE CHANGES
+-- WHAT WERE THOSE CHANGES
+-- WHERE WERE THOSE CHANGES
+-- TO CLONE THE PROJECT FROM THE REMOTE REPOSITORY TO YOUR LOCAL PC
+
+
+1->		TO INITIALISE GIT IN A FOLDER WE USE "GIT INIT "
+
+if we are inside a folder on local pc then to initialise it with git we use
+git init
+# "git init" will create .git hidden file inside that folder
+
+2-> 	"GIT CLONE" COMMAND IS USED TO CLONE THE REMOTE REPOSITORY TO THE LOCAL HOST current directory
+git clone https://github.com/proacher/SPACE-WARS
+
+
+3-> 	"GIT ADD " IS USED TO CHANGE THE UNSTAGED ARE TO STAGED AREA
+# In simple words "git add filename.extension" will add the files you want to commit changes to or you have changes from the original file
+# git add filename.extension # to add a single filename to the staged area
+# git add --all	# to add all the files present in the current directory to staged area
+
+
+4-> 	" GIT COMMIT -M "MESSAGE" " IS USE TO LOCK THE CHANGES THAT YOU HAVE MADE FROM THE ORIGINAL FILE. "MESSAGE" WILL BE DISPLAYED AGAINST
+# 		THOSE CHANGES THAT YOU HAVE MADE
+# git commit -m "this changes are made by proacher"
+
+5-> 	" GIT COMMIT --AMEND" WILL AMEND THE CHANGES IN THE LAST COMMIT AND NOT CREATE NEW COMMIT "
+# git commit --amend
+# ( Note: To exit from the editor first press 'Esc' and then press ':wq' (without colon) ) 
+
+6-> 	"GIT STATUS" IS USED TO CHECK THE STATUS OF THE CURRENT DIRECTORY; IT TELLS US IN WHAT FILE THE RECENT CHANGES ARE MADE;
+# git status
+
+7-> 	"GIT LOG" IS USED TO SEE ALL THE PREVIOUS CHANGES MADE ON THAT REPOSITORY I.E. COMMIT HISTORY
+# git log # it will show all the commit made in this repo
+# git log -7 # it will show last 7 commit made in this repo
+
+
+8-> 	"GIT SHOW ID" # WILL SHOW THE ALL THE COMMIT CHANGES IN THIS REPOSITORY
+# git show 7aaa3dasf45sfas0sdfas9sdf7sdf3sdf2 # just for example; changes made by 7aaa3dasf45sfas0sdfas9sdf7sdf3sdf2 will be shown
+
+9-> 	"GIT BRANCH" WILL SHOW THE CURRENT BRANCH WITH ASTERISK AND OTHER NOT
+# git branch 
+
+10-> 	GIT DIFF FILENAME.EXTENSION # LIST OUT ALL THE CHANGES IN THAT FILE LINE BY LINE
+# git diff index.html
+
+
+11-> 	"GIT CHECKOUT -B SHUSHANT" # IT WILL CREATE A NEW BRANCH "SHUSHANT" AND COPY ALL THE CODE FROM THE MAIN BRANCH TO THIS BRANCH 
+#		AND CHANGE YOUR CURRENT BRANCH TO BE SHUSHANT
+#		"GTI BRANCH SHUSHANT" # WILL CREATE A NEW BRANCH WITH NAME SHUSHANT ONLY.
+# git branch -b shushant
+# git branch shushant 
+
+12-> 	TO CHANGE FROM THE CURRENT BRANCH TO THE OTHER BRANCH WE USE GIT CHECKOUT "BRANCHNAME"
+# suppose we are in shushant branch
+# git checkout master # this will take us to master branch 
+
+13-> 	"GIT BRANCH -D SHUSHANT" # THIS WILL DELETE SHUSHANT BRANCH
+# YOU CANNOT DELETE SHUSHANT BRANCH FROM INSIDE THE SHUSHANT BRANCH. YOU HAVE TO BE PRESENT IN DIFFERENT BRANCH
+# git branch -d shushant
+
+
+14-> 	"GIT MERGE SHUSHANT" # WILL MEREGE THE SHUSHANT BRANCH WILL THE MAIN BRANCH
+# WE SHOULD USE THIS COMMAND INSIDE THE MAIN BRANCH SINCE WE WANT TO MERGE SHUSHANT INTO THE MAIN BRANCH
+# git merge shuhant # here current branch is main branchf
+
+
+
+# DIFFERENCE BETWEEN HAED AND INDEX HERE IS:
+# HEAD POINTS TO WHERE YOU LAST COMMITED WHEREAS INDEX POINT TO THE CURRENT CHANGES THAT YOU ARE DOING IN PRESENT WORKING DIRECTORY
+
+
+BASIC STEPS THAT YOU DO TO COMMIT:
+
+1-> FIRST YOU MADE CHANGES TO THE CODE IN THE WORKING DIRECTORY
+2-> AT THIS POINT HEAD AND INDEX POINT TO THE SAME PREVIOUS COMMITED CODE, AS THESE CHANGES ARE UNSTAGED 
+3-> TO COMMIT IT YOU NEED IT TO BE STAGED. TO DO THAT YOU ADD IT TO STAGED AREA USED "git add ."
+4-> AFTER ADDING THIS TO STAGED AREA, NOW THE INDEX WILL POINT TO THIS CHANGE WHILE HEAD STILL POINTS TO LAST COMMIT CHANGE
+5-> NOW LAST STEP IS TO COMMIT CHANGE. AFTER COMMITTING , HEAD AND INDEX WILL POINT TO THIS COMMITED CHANGE
+
+# DIFFERENCE HARD COMMIT, SOFT COMMIT AND MIXED COMMIT
+
+# When you modify a file in your repository, the change is initially unstaged. In order to commit it, you must stage it—that is,
+# add it to the index—using git add. When you make a commit, the changes that are committed are those that have been added to the index.
+# git reset changes, at minimum, where the current branch (HEAD) is pointing. The difference between --mixed and --soft is whether or not
+# your index is also modified. So, if we're on branch master with this series of commits:
+#
+## SOFT COMMIT
+# git reset --soft B
+# - A - B - C (master)
+# HEAD points to C and the index matches C.#
+# When we run git reset --soft B, master (and thus HEAD) now points to B, but the index still has the changes from C; 
+# git status will show them as staged. So if we run git commit at this point, we'll get a new commit with the same changes as C.
+
+
+
+# Okay, so starting from here again:
+# - A - B - C (master)
+# git reset --mixed B
+## MIXED COMMIT
+# Now let's do git reset --mixed B. (Note: --mixed is the default option).
+# Once again, master and HEAD point to B, but this time the index is also modified to match B. If we run git commit at this point,
+# nothing will happen since the index matches HEAD. We still have the changes in the working directory, but since they're not in the index,
+# git status shows them as unstaged. To commit them, you would git add and then commit as usual.
+
+
+# git reset --hard B
+## HARD COMMIT
+# And finally, --hard is the same as --mixed (it changes your HEAD and index), except that --hard also modifies your working directory. 
+# If we're at C and run git reset --hard B, then the changes added in C, as well as any uncommitted changes you have, will be removed, 
+# and the files in your working copy will match commit B. Since you can permanently lose changes this way, you should always run git status 
+# before doing a hard reset to make sure your working directory is clean or that you're okay with losing your uncommitted changes.
+
+# In the simplest terms:
+
+--soft: uncommit changes, changes are left staged (index).
+--mixed (default): uncommit + unstage changes, changes are left in working tree.
+--hard: uncommit + unstage + delete changes, nothing left.
+
+15->	GIT RESTORE --STAGED FILENAME.EXTENSION # WILL CHANGE THE INDEX FROM STAGED TO UNSTAGED AREA(PREV COMMIT)
+		GIT RESTORE FILENAME.EXTENSION # NOW THIS SECOND COMMAD WILL REMOVE THE CHANGES MADE IN THE ORIGINAL FILE
+# git restore --staged index.txt
+# git restore index.txt
+
+
+16-> 	GIT PULL IS USED TO SYNC THE LOACL HOST WORKING DIRECTORY WITH THE REMOTE WORKING DIRECTORY ( ORIGINAL CODE DIRECTORY )
+# git pull
+
+17-> GIT PUSH IS USED TO PUSH THE CHANGES MADE IN LOCAL WORKING DIRECTORY TO THE MAIN DIRECTORY ( ORIGINAL CODE DIRECTORY )
+# git push
+
+
