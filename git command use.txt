@@ -87,15 +87,18 @@ BASIC STEPS THAT YOU DO TO COMMIT:
 
 # DIFFERENCE HARD COMMIT, SOFT COMMIT AND MIXED COMMIT
 
+## SOFT COMMIT
 # When you modify a file in your repository, the change is initially unstaged. In order to commit it, you must stage it—that is,
 # add it to the index—using git add. When you make a commit, the changes that are committed are those that have been added to the index.
 # git reset changes, at minimum, where the current branch (HEAD) is pointing. The difference between --mixed and --soft is whether or not
 # your index is also modified. So, if we're on branch master with this series of commits:
-#
-## SOFT COMMIT
-# git reset --soft B
-# - A - B - C (master)
+# LETS SAY WE HAVE THREE CONSECUTIVE COMMIT A , B AND  C 
+# GIT COMMIT -M  "A"
+# GIT COMMIT -M  "B"
+# GIT COMMIT -M  "C"
 # HEAD points to C and the index matches C.#
+# NOW IF WE USE THE COMMAMD
+# git reset --soft B
 # When we run git reset --soft B, master (and thus HEAD) now points to B, but the index still has the changes from C; 
 # git status will show them as staged. So if we run git commit at this point, we'll get a new commit with the same changes as C.
 
